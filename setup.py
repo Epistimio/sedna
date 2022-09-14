@@ -37,17 +37,10 @@ if __name__ == "__main__":
         ],
         packages=[
             "sedna.core",
-            "sedna.plugins.example",
         ],
         setup_requires=["setuptools"],
         install_requires=["importlib_resources", "orion", "typing_extensions"],
         namespace_packages=[
             "sedna",
-            "sedna.plugins",
         ],
-        package_data={
-            "sedna.data": [
-                "sedna/data",
-            ],
-        },
     )

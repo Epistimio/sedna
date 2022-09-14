@@ -1,6 +1,15 @@
 from dataclasses import dataclass
 
-from sedna.core.space import get_space_configuration, hyperparameter, uniform
+import pytest
+
+from sedna.core.space import (
+    choices,
+    get_space_configuration,
+    hyperparameter,
+    loguniform,
+    normal,
+    uniform,
+)
 
 
 @hyperparameter(a=uniform(0, 1), b=uniform(1, 2))
@@ -23,7 +32,9 @@ class ObjectWithSpaceMethod:
 @dataclass
 class DataClassWithSpace:
     a: uniform(0, 1) = 0
-    b: uniform(1, 2) = 1
+    b: loguniform(1, 2) = 1
+    c: normal(1, 2) = 1
+    d: choices([1, 2, 3]) = 1
 
 
 def test_decorated_function():
@@ -47,4 +58,16 @@ def test_object_with_space_method():
 
 def test_dataclass_types():
     obj = DataClassWithSpace()
-    assert get_space_configuration(obj) == {"a": "uniform(0, 1)", "b": "uniform(1, 2)"}
+    assert get_space_configuration(obj) == {
+        "a": "uniform(0, 1)",
+        "b": "loguniform(1, 2)",
+        "c": "normal(1, 2)",
+        "d": "choices([1, 2, 3])",
+    }
+
+
+def test_wrong_obj():
+    obj = True
+
+    with pytest.raises(TypeError):
+        get_space_configuration(obj)
