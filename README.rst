@@ -1,7 +1,7 @@
 sedna
 =====
 
-|pypi| |py_versions| |codecov| |docs| |tests| |style|
+|pypi| |py_versions| |codecov| |tests| |style|
 
 .. |pypi| image:: https://img.shields.io/pypi/v/sedna.svg
     :target: https://pypi.python.org/pypi/sedna
