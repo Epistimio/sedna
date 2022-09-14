@@ -1,0 +1,16 @@
+global-exclude *.pyc
+global-exclude __pycache__
+recursive-include sedna/* *.json
+include LICENSE
+include requirements.txt
+
+exclude .readthedocs.yml
+exclude tox.ini
+exclude Makefile
+exclude .pylintrc
+exclude .pre-commit-config.yaml
+
+prune docs
+prune tests
+prune examples
+prune sedna/plugins
