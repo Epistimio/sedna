@@ -1,7 +1,7 @@
 from typing import Any, List, Optional, Union
 
+from orion.algo.space import Dimension, Space
 from orion.core.io.space_builder import DimensionBuilder, SpaceBuilder
-from orion.algo.space import Space, Dimension
 
 
 # pylint: disable=too-few-public-methods

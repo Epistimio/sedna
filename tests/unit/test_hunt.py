@@ -1,5 +1,5 @@
-from sedna.core.space import fidelity, get_space, hyperparameter, uniform
 from sedna.core.hunt import Optimize
+from sedna.core.space import fidelity, get_space, hyperparameter, uniform
 
 
 @hyperparameter(a=uniform(0, 1), b=uniform(1, 2))
@@ -23,13 +23,13 @@ def test_random_hunt():
 
 
 @hyperparameter(epoch=fidelity(2, 10, base=2), a=uniform(0, 1), b=uniform(1, 2))
-def fun(epoch, a, b):
+def fun2(epoch, a, b):
     return (a + b) / epoch
 
 
 def test_hyperband_hunt():
 
-    space = get_space(fun)
+    space = get_space(fun2)
 
     hunter = Optimize("hyperband", space, max_trials=10)
 
@@ -37,6 +37,6 @@ def test_hyperband_hunt():
         samples = hunter.suggest(2)
 
         for sample in samples:
-            result = fun(**sample.params)
+            result = fun2(**sample.params)
 
             hunter.observe(sample, result)

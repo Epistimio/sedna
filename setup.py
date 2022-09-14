@@ -40,7 +40,7 @@ if __name__ == "__main__":
             "sedna.plugins.example",
         ],
         setup_requires=["setuptools"],
-        install_requires=["importlib_resources", "orion", 'typing_extensions'],
+        install_requires=["importlib_resources", "orion", "typing_extensions"],
         namespace_packages=[
             "sedna",
             "sedna.plugins",
