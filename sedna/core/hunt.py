@@ -97,13 +97,11 @@ class Optimize:
 
         else:
             trial = self.trials[sample.id]
-            results = trial.results
-            results += [_FakeTrial(sample).objective]
-            trial.results = results
-
+            trial.status = "completed"
+            trial.results.append(_FakeTrial(sample).objective)
             self.algo.observe([trial])
 
-        assert self.algo.n_observed > n
+        assert self.is_done() or self.algo.n_observed > n
 
     def is_done(self):
         """Return true if the algo finished optimizing"""
