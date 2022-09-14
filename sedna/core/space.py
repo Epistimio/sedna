@@ -169,7 +169,7 @@ def get_space_dimensions(obj):
 
 
 def get_space_configuration(obj) -> Space:
-    """Build orion space configuration fron an object"""
+    """Build orion space configuration from an object"""
     dimensions = get_space_dimensions(obj)
 
     config = dict()
