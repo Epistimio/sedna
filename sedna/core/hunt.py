@@ -85,7 +85,7 @@ class Optimize:
         return [self._no_trial(t) for t in trials]
 
     def observe(self, sample: Sample, result: float) -> None:
-        """Observe the obhective for a given sample"""
+        """Observe the objective for a given sample"""
         n = self.algo.n_observed
 
         sample.result.append(result)
